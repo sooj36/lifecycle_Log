@@ -5,11 +5,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.example.lifecycle.databinding.ActivityMainBinding
+import com.example.lifecycle.fragment.AFragment
+import com.example.lifecycle.fragment.BFragment
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    var flag = 0
+
+    /*
+* when flag is 0 : 처음
+* when flag is 1 : FragmentA
+* when flag is 2 : FragmentB
+* */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.switchFragment.setOnClickListener {
+            switchFragment()
+        }
+
+        binding.removeFragment.setOnClickListener {
+            removeFragment()
+        }
 
         val toDetail = findViewById<Button>(R.id.to_detail)
         toDetail.setOnClickListener {
@@ -18,6 +40,34 @@ class MainActivity : AppCompatActivity() {
             finish()
             Log.d("sooj", "click_the_Detail_btn")
         }
+
+    }
+
+    private fun switchFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        when (flag) {
+            0 -> {
+                transaction.add(R.id.frameLayout, AFragment())
+                flag = 1
+            }
+            1 -> {
+                transaction.add(R.id.frameLayout, BFragment())
+                flag = 2
+            }
+            2 ->{
+                transaction.replace(R.id.frameLayout, AFragment())
+                flag = 1
+            }
+        }
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun removeFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        val frameLayout = supportFragmentManager.findFragmentById(R.id.frameLayout)
+        transaction.remove(frameLayout!!)
+        transaction.commit()
     }
 
 
