@@ -16,34 +16,34 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             startActivity(intent)
             finish()
-            Log.d("sooj", "to_detail_btn")
+            Log.d("sooj", "click_the_Detail_btn")
         }
     }
 
 
     override fun onStart() {
-        Log.d("sooj", "onStart()")
+        Log.d("sooj", "onStart()_In_main")
         super.onStart()
     }
 
     override fun onResume() {
-        Log.d("sooj", "onResume()")
+        Log.d("sooj", "onResume()_In_main")
         super.onResume()
     }
 
     override fun onPause() {
-        Log.d("sooj", "onPause()")
+        Log.d("sooj", "onPause()_In_main")
         super.onPause()
     }
 
     override fun onStop() {
-        Log.d("sooj", "onStop()")
+        Log.d("sooj", "onStop()_In_main")
         super.onStop()
     }
 
 
     override fun onDestroy() {
-        Log.d("sooj", "onDestroy()")
+        Log.d("sooj", "onDestroy()_In__In_main")
         super.onDestroy()
     }
 }

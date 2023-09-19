@@ -2,9 +2,7 @@ package com.example.lifecycle
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+            Log.d("sooj","Click_the_Main_btn")
         }
     }
 
