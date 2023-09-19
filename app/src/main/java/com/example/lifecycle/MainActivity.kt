@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import com.example.lifecycle.databinding.ActivityMainBinding
 import com.example.lifecycle.fragment.AFragment
 import com.example.lifecycle.fragment.BFragment
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.toast.setOnClickListener {
+                showToast("토스트 짠", Toast.LENGTH_SHORT)
+        }
+
 
         binding.switchFragment.setOnClickListener {
             switchFragment()
@@ -69,6 +75,8 @@ class MainActivity : AppCompatActivity() {
         transaction.remove(frameLayout!!)
         transaction.commit()
     }
+
+
 
 
     override fun onStart() {
