@@ -1,6 +1,7 @@
 package com.example.lifecycle.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,7 @@ class BFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.d("sooj", "onCreateView()_in_B")
         return inflater.inflate(R.layout.fragment_b, container, false)
     }
 
@@ -56,5 +58,50 @@ class BFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("sooj", "onViewCreated()_in_B")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.d("sooj", "onViewStateRestored()_in_B")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("sooj", "onStart()_in_B")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("sooj", "onResume()_in_B")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("sooj", "onPause()_in_B")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("sooj", "onStop()_in_B")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("sooj", "onSaveInstanceState()_in_B")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("sooj", "onDestroyView()_in_B")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("sooj", "onDestroy()_in_B")
     }
 }

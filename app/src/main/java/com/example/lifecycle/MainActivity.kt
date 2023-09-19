@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 flag = 1
             }
             1 -> {
-                transaction.add(R.id.frameLayout, BFragment())
+                transaction.replace(R.id.frameLayout, BFragment())
                 flag = 2
             }
             2 ->{

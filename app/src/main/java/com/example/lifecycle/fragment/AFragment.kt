@@ -1,6 +1,7 @@
 package com.example.lifecycle.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ class AFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            Log.d("sooj", "onCreate()_in_A")
         }
     }
 
@@ -35,7 +37,9 @@ class AFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.d("sooj", "onCreateView()_in_A")
         return inflater.inflate(R.layout.fragment_a, container, false)
+
     }
 
     companion object {
@@ -56,5 +60,50 @@ class AFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("sooj", "onViewCreate()_in_A")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.d("sooj", "onViewStateRestored()_in_A")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("sooj", "onStart()_in_A")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("sooj", "onResume()_in_A")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("sooj", "onPause()_in_A")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("sooj", "onStop()_in_A")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("sooj", "onSaveInstanceState_in_A")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("sooj", "onDestroyView()_in_A")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("sooj", "onDestroy()_in_A")
     }
 }
